@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/author")
+//Crud Operation
 public class AuthorController {
     @Autowired
     private AuthorService authorService;

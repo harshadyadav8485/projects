@@ -2,6 +2,7 @@ package com.example.demo.test.service;
 
 import com.example.demo.test.entity.User;
 import com.example.demo.test.entity.UserProfile;
+import com.example.demo.test.exception.UserNotFoundException;
 import com.example.demo.test.repository.UserProfileRepository;
 import com.example.demo.test.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,8 @@ public class UserService {
     }
 
     public UserProfile getUserProfile(Long id){
-Optional<UserProfile> userProfile=userProfileRepository.findById(id);
+        UserProfile userData=userProfileRepository.findById(id).orElseThrow(()-> new UserNotFoundException(String.format("User not found")));
+   Optional<UserProfile> userProfile=userProfileRepository.findById(id);
         
 return userProfile.get();
     }

@@ -31,12 +31,8 @@ try{
 
     @GetMapping("/{id}")
     public ResponseEntity<UserProfile> getUserProfile(@PathVariable Long id) {
-        try {
-            UserProfile userProfile = userService.getUserProfile(id);
-            return ResponseEntity.ok(userProfile);
-        } catch (Exception e) {
-            return ResponseEntity.status(404).body(null);
-        }
+        UserProfile userProfile = userService.getUserProfile(id);
+        return ResponseEntity.ok(userProfile);
     }
 
     }
